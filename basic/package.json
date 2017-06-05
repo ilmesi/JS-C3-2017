@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "React Intro",
   "scripts": {
-    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --open --progress"
+    "dev": "node_modules/.bin/webpack-dev-server --open --progress"
   },
   "keywords": [],
   "author": "ilmesi",

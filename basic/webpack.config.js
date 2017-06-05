@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -8,7 +7,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:8080/build/'
   },
   module: {
     rules: [
@@ -16,10 +16,6 @@ module.exports = {
         test: /\.jsx?/,
         exclude: /node_modules/,
         use: 'babel-loader'
-      },
-      {
-        test: /\.html$/,
-        use: [ "html-loader" ]
       }
     ]
   },
@@ -27,17 +23,11 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    contentBase: path.join(__dirname, "build"),
-    compress: true,
-    port: 8000,
-    hot: true
+    inline: true,
+    hot: true,
+    contentBase: './',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', '/layout.html'),
-      path: path.resolve(__dirname, 'build'),
-      filename: 'index.html'
-    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 }

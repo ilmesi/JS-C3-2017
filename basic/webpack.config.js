@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -7,8 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: 'http://localhost:8080/build/'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -24,10 +24,13 @@ module.exports = {
   },
   devServer: {
     inline: true,
-    hot: true,
-    contentBase: './',
+    hot: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'layout.html'),
+      filename: 'index.html'
+    })
   ]
 }

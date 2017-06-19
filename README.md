@@ -1,4 +1,4 @@
-# React First Class (JS-C3-2017)
+# React Second Class (JS-C3-2017)
 
 ## Examples
 
